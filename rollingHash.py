@@ -44,7 +44,8 @@ def search(text: str, pattern: str, prime=10007) -> int:
         # Find the next window to calculate hash for
         if index < textLen - patternLen:
             # Remove the first character and add the next character in text
-            currWindowHash = (charMax*(currWindowHash - ord(text[index])*divisionFactor) + ord(text[index+patternLen])) % prime
+            currWindowHash = (charMax*(currWindowHash - ord(text[index])*divisionFactor))
+            currWindowHash = (currWindowHash +  ord(text[index+patternLen])) % prime
             if currWindowHash < 0:
                 currWindowHash += prime
     print("No pattern was found...")
